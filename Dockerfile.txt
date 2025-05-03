@@ -1,0 +1,24 @@
+# Use a slim Python base image. Adjust if you plan to use GPU (see below).
+FROM python:3.11-slim
+
+# Install system dependencies (if needed)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the working directory
+WORKDIR /app
+
+# Copy requirements file and install Python dependencies
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copy the rest of your project files
+COPY . .
+
+# Expose the port (Flask defaults to 5000)
+EXPOSE 5000
+
+# Command to run your Flask application
+CMD ["python", "app.py"]

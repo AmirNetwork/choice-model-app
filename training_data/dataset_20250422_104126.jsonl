@@ -1,0 +1,7 @@
+{"instruction": "\"instruction\"", "response": "\"Create an instance of the model with sample parameters.\","}
+{"instruction": "\"response\"", "response": "\"To create an instance, you would use the following code: `model = Model(n_items=10, n_shared_features=5, n_items_features=20)` where 10 is the number of items, 5 is the number of shared features, and 20 is the number of item-specific features.\","}
+{"instruction": "\"code\"", "response": "\"\""}
+{"instruction": "\"instruction\"", "response": "\"Compute the report using the compute_report method.\","}
+{"instruction": "\"response\"", "response": "\"After instantiating the model with parameters (e.g., n_items=10), you can compute the report by calling `report = model.compute_report(dataset)` where dataset is your ChoiceDataset object.\","}
+{"instruction": "\"instruction\"", "response": "\"Format the report into a JSON array.\","}
+{"instruction": "\"response\"", "response": "\"The report dictionary should be formatted as follows: `formatted_report = {\"instruction\": \"...\", \"response\": \"...\"}` where ... are appropriate values.\","}

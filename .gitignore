@@ -1,0 +1,6 @@
+# Ignore HuggingFace model cache
+hf_cache/
+# Python artifacts
+__pycache__/
+venv/
+API key.txt

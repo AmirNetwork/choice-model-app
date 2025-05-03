@@ -1,0 +1,3 @@
+{"instruction": "Compute the deterministic utilities for choice data.", "response": "Example: \n`deterministic_utilities = dcm.compute_deterministic_utilities(...)`\nThis computes utilities based on shared and items features."}
+{"instruction": "Fit the model to a ChoiceDataset.", "response": "Example: \n`fit_result = dcm.fit(choice_dataset)`\nReturns estimation results including parameter estimates and metrics."}
+{"instruction": "Predict probabilities of choices given utilities.", "response": "Example: \n`predicted_choices = dcm.predict_probabilities(utilities)`\nCalculates choice probabilities using the estimated parameters."}
