@@ -128,8 +128,16 @@
     const formData = new FormData(chatForm);
     const res = await fetch(chatForm.action, { method: 'POST', body: formData });
     const text = await res.text();
-    chatArea.innerHTML += `<div class="chat-message user"><div class="chat-bubble">${formData.get('message')}</div></div>`;
-    chatArea.innerHTML += `<div class="chat-message assistant"><div class="chat-bubble">${text}</div></div>`;
+
+    chatArea.innerHTML += `
+      <div class="chat-message user">
+        <div class="chat-bubble">${formData.get('message')}</div>
+      </div>`;
+    chatArea.innerHTML += `
+      <div class="chat-message assistant">
+        <div class="chat-bubble">${text}</div>
+      </div>`;
+
     responseOutput.textContent = text;
     chatArea.scrollTop = chatArea.scrollHeight;
     chatForm.reset();
