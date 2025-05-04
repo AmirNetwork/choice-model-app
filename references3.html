@@ -8,7 +8,9 @@
 <body class="bg-light">
   <nav class="navbar navbar-light bg-white shadow-sm mb-4">
     <div class="container">
-      <a class="navbar-brand" href="index3.html">← Home</a>
+      <!-- Changed link to point at your GitHub Pages index page -->
+      <a class="navbar-brand" href="index.html">← Home</a>
+      <!-- Updated logout URL to current tunnel host -->
       <a class="btn btn-outline-secondary" href="https://plain-son-bars-auto.trycloudflare.com/logout">Logout</a>
     </div>
   </nav>
@@ -20,6 +22,7 @@
         <!-- Success message placeholder -->
         <div class="alert alert-success" id="success-msg" style="display:none;"></div>
 
+        <!-- Updated form action to point at your tunnel’s /references endpoint -->
         <form method="POST" action="https://plain-son-bars-auto.trycloudflare.com/references">
           <div class="mb-3">
             <label class="form-label">Title (optional)</label>
@@ -41,7 +44,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Show success message if provided in URL as ?msg=
+    // Show success message if provided via ?msg= in the URL
     const params = new URLSearchParams(window.location.search);
     if (params.has('msg')) {
       const el = document.getElementById('success-msg');

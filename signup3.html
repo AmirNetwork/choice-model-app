@@ -54,8 +54,10 @@
   <div class="signup-container">
     <h1>Create an Account</h1>
 
+    <!-- Error message placeholder -->
     <div class="error" id="error-msg" style="display:none;"></div>
 
+    <!-- Updated form action to point at your tunnel’s /signup endpoint -->
     <form method="POST" action="https://plain-son-bars-auto.trycloudflare.com/signup">
       <input type="text" name="username" placeholder="Username..." required>
       <input type="password" name="password" placeholder="Password..." required>
@@ -63,16 +65,18 @@
     </form>
 
     <p>
-      Already have an account? <a href="login3.html">Log in</a>
+      Already have an account? 
+      <!-- Link back to your static login page -->
+      <a href="login3.html">Log in</a>
     </p>
   </div>
 
   <script>
+    // Display signup error if ?error= in URL
     const params = new URLSearchParams(window.location.search);
     if (params.has('error')) {
-      const msg = params.get('error');
       const el = document.getElementById('error-msg');
-      el.textContent = msg;
+      el.textContent = params.get('error');
       el.style.display = 'block';
     }
   </script>

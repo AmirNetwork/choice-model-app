@@ -54,9 +54,10 @@
   <div class="login-container">
     <h1>Login to Infinity</h1>
 
-    <!-- Error message will appear here if login fails -->
+    <!-- Error message placeholder -->
     <div class="error" id="error-msg" style="display:none;"></div>
 
+    <!-- Updated form action to point at your tunnel’s /login endpoint -->
     <form method="POST" action="https://plain-son-bars-auto.trycloudflare.com/login">
       <input type="text" name="username" placeholder="Username..." required>
       <input type="password" name="password" placeholder="Password..." required>
@@ -64,12 +65,14 @@
     </form>
 
     <p style="margin-top:0.625rem;">
-      Don't have an account? <a href="signup3.html">Sign up</a>
+      Don't have an account? 
+      <!-- Link to your static signup page -->
+      <a href="signup3.html">Sign up</a>
     </p>
   </div>
 
   <script>
-    // Example: display error if URL contains ?error=message
+    // Display error if URL contains ?error=message
     const params = new URLSearchParams(window.location.search);
     if (params.has('error')) {
       const msg = params.get('error');

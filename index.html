@@ -56,11 +56,6 @@
       border-bottom: 0.125rem solid #eee;
       padding-bottom: 0.625rem;
     }
-    h3 {
-      color: #003c71;
-      margin: 1.25rem 0 0.625rem 0;
-      font-size: 1.25rem;
-    }
     form { margin-bottom: 1.5625rem; }
     input[type="file"],
     input[type="submit"],
@@ -101,64 +96,6 @@
       border: none;
       border-top: 0.0625rem solid #ddd;
     }
-    pre {
-      background: #f8f9fa;
-      padding: 0.9375rem;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      border: 0.0625rem solid #e0e0e0;
-      border-left: 0.3125rem solid #003c71;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.9375rem;
-      line-height: 1.5;
-      margin-top: 0.625rem;
-    }
-    code {
-      background-color: #e9ecef;
-      padding: 0.125rem 0.25rem;
-      border-radius: 0.1875rem;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.875rem;
-    }
-    .feedback {
-      margin-top: 0.625rem;
-      padding: 0.625rem;
-      border-radius: 0.25rem;
-      font-weight: normal;
-    }
-    .file-feedback {
-      color: #003c71;
-      background-color: #e7f3ff;
-      border: 0.0625rem solid #b3d7ff;
-    }
-    .description-feedback {
-      color: #155724;
-      background-color: #d4edda;
-      border: 0.0625rem solid #c3e6cb;
-    }
-    .error-feedback {
-      color: #721c24;
-      background-color: #f8d7da;
-      border: 0.0625rem solid #f5c6cb;
-      font-weight: bold;
-    }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
-    }
-    ul li {
-      background-color: #f0f0f0;
-      margin-bottom: 0.3125rem;
-      padding: 0.3125rem 0.625rem;
-      border-radius: 0.1875rem;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.875rem;
-    }
-    .info-text {
-      font-size: 0.9375rem;
-      color: #555;
-      margin-bottom: 0.9375rem;
-    }
     .chat-area {
       border: 0.0625rem solid #ddd;
       border-radius: 0.5rem;
@@ -191,6 +128,19 @@
       background-color: #f8d7da;
       border: 0.0625rem solid #f5c6cb;
       border-top-left-radius: 0;
+    }
+    .info-text {
+      font-size: 0.9375rem;
+      color: #555;
+      margin-bottom: 0.9375rem;
+    }
+    pre {
+      background: #f8f9fa;
+      padding: 0.9375rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: 0.0625rem solid #e0e0e0;
+      border-left: 0.3125rem solid #003c71;
     }
     @media (max-width: 48rem) {
       main { margin: 1.25rem 0.9375rem; padding: 1.25rem; }
@@ -225,24 +175,22 @@
 
   <h2>1. Upload Your Dataset</h2>
   <p class="info-text">Upload Excel (<code>.xlsx</code>) or CSV (<code>.csv</code>).</p>
-  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post" enctype="multipart/form-data">
+  <form action="https://plain-son-bars-auto.trycloudflare.com/app" method="post" enctype="multipart/form-data">
     <input type="hidden" name="action" value="upload_file">
     <input type="file" name="file" accept=".xlsx, .csv" required>
     <input type="submit" value="Upload File">
   </form>
-  <!-- File feedback will appear here -->
 
   <h2>2. Describe Your Data (Optional)</h2>
   <p class="info-text">
     Provide definitions for variables to improve model guidance.<br>
     <code>Choice: 1 if chosen, 0 otherwise. Price: Price in AUD...</code>
   </p>
-  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post">
+  <form action="https://plain-son-bars-auto.trycloudflare.com/app" method="post">
     <input type="hidden" name="action" value="save_description">
     <textarea name="data_description" rows="5" placeholder="Enter variable definitions here..."></textarea>
     <input type="submit" value="Save Description">
   </form>
-  <!-- Description feedback here -->
 
   <h2>3. Chat with Infinity</h2>
   <p class="info-text">
@@ -253,7 +201,7 @@
     <!-- Chat messages will be injected here -->
   </div>
 
-  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post" id="chat-form">
+  <form action="https://plain-son-bars-auto.trycloudflare.com/app" method="post" id="chat-form">
     <input type="hidden" name="action" value="send_message">
     <textarea name="message" rows="4" placeholder="Type your message..."></textarea><br>
     <input type="submit" value="Send Message">
@@ -264,7 +212,7 @@
 </main>
 
 <script>
-  // Basic JS to handle form submissions and update chat area
+  // Handle chat submissions
   const chatForm = document.getElementById('chat-form');
   const chatArea = document.getElementById('chat-area');
   const responseOutput = document.getElementById('response-output');
@@ -272,12 +220,10 @@
   chatForm.onsubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(chatForm);
-    const res = await fetch(chatForm.action, {
-      method: 'POST',
-      body: formData
-    });
+    const res = await fetch(chatForm.action, { method: 'POST', body: formData });
     const text = await res.text();
-    // Append user message and bot response
+
+    // Show user + bot messages
     const userMsg = formData.get('message');
     chatArea.innerHTML += `<div class="chat-message user"><div class="chat-bubble">${userMsg}</div></div>`;
     chatArea.innerHTML += `<div class="chat-message assistant"><div class="chat-bubble">${text}</div></div>`;
@@ -286,5 +232,6 @@
     chatForm.reset();
   };
 </script>
+
 </body>
 </html>
