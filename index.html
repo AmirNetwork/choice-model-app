@@ -211,10 +211,10 @@
 <main>
   <p style="text-align:right; font-size:0.875rem;">
     Logged in as: <strong>USERNAME</strong> |
-    <a href="https://undo-ink-portions-attempting.trycloudflare.com/logout" style="color:#003c71;">Logout</a>
+    <a href="https://plain-son-bars-auto.trycloudflare.com/logout" style="color:#003c71;">Logout</a>
   </p>
   <p style="text-align:right; font-size:0.875rem;">
-    <a href="https://undo-ink-portions-attempting.trycloudflare.com/references" style="color:#003c71;">Manage Papers/Code References</a>
+    <a href="https://plain-son-bars-auto.trycloudflare.com/references" style="color:#003c71;">Manage Papers/Code References</a>
   </p>
 
   <h2>Welcome</h2>
@@ -225,7 +225,7 @@
 
   <h2>1. Upload Your Dataset</h2>
   <p class="info-text">Upload Excel (<code>.xlsx</code>) or CSV (<code>.csv</code>).</p>
-  <form action="https://undo-ink-portions-attempting.trycloudflare.com/app" method="post" enctype="multipart/form-data">
+  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post" enctype="multipart/form-data">
     <input type="hidden" name="action" value="upload_file">
     <input type="file" name="file" accept=".xlsx, .csv" required>
     <input type="submit" value="Upload File">
@@ -237,7 +237,7 @@
     Provide definitions for variables to improve model guidance.<br>
     <code>Choice: 1 if chosen, 0 otherwise. Price: Price in AUD...</code>
   </p>
-  <form action="https://undo-ink-portions-attempting.trycloudflare.com/app" method="post">
+  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post">
     <input type="hidden" name="action" value="save_description">
     <textarea name="data_description" rows="5" placeholder="Enter variable definitions here..."></textarea>
     <input type="submit" value="Save Description">
@@ -253,7 +253,7 @@
     <!-- Chat messages will be injected here -->
   </div>
 
-  <form action="https://undo-ink-portions-attempting.trycloudflare.com/app" method="post" id="chat-form">
+  <form action="https://plain-son-bars-auto.trycloudflare.com" method="post" id="chat-form">
     <input type="hidden" name="action" value="send_message">
     <textarea name="message" rows="4" placeholder="Type your message..."></textarea><br>
     <input type="submit" value="Send Message">
