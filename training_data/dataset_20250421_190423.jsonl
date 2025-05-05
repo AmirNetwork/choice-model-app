@@ -1,1 +1,0 @@
-{"instruction": "Error", "response": "Ollama CLI not found. Ensure Ollama is installed and its path is correct. You can specify ollama_path when creating DeepSeekClient."}
